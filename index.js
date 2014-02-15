@@ -3,56 +3,32 @@ var Transform = require('stream').Transform
 var ok = require('assert').ok
 util.inherits(Blocker, Transform)
 
-function Blocker (readable) {
-    this._buffered = 0
-    this._buffers = []
-    this._readable = readable
+function Blocker (stream) {
+    this._stream = stream
+    this._stream.on('readable', this._read.bind(this))
 }
 
 Blocker.prototype.block = function (size, callback) {
     ok(!this._next, 'size already set')
     this._next = { size: size, callback: callback }
-    if (!this._consume()) {
-        this._readable.once('readable', this._readable.bind(this))
-    }
+    this._consume()
 }
 
-Blocker.prototype._readable = function (size, callback) {
+Blocker.prototype._read = function () {
+    this._readable = true
+    this._consume()
 }
 
 Blocker.prototype._consume = function () {
-    var size = this._next.size, total = 0
-    for (var i = 0, I = this._buffers.length; i < I; i++) {
-        var buffer = this._buffers[i], length = buffer.length
-        if (size <= total + length) {
-            var remaining = size - total,
-                slice = this._buffers.slice(0, i + 1),
-                callback = this._next.callback,
-                block
+    if (this._next && this._readable) {
+        var chunk = this._stream.read(this._next.size)
+        if (chunk != null) {
+            var callback = this._next.callback
             delete this._next
-            if (remaining != length) {
-                slice.pop()
-                slice.push(buffer.slice(0, remaining))
-                this._buffers.unshift(buffer.slice(remaining))
-            }
-            if (slice.length == 1) {
-                block = slice[0]
-            } else {
-                block = Buffer.concat(slice, size)
-            }
-            callback(block)
-            return true
+            callback(chunk)
         } else {
-            total += length
+            this._readable = false
         }
-    }
-    return false
-}
-
-Blocker.prototype._transform = function () {
-    this._buffers.push(chunk)
-    if (this._size) {
-        this._consume()
     }
 }
 
