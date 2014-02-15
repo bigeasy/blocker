@@ -1,0 +1,36 @@
+{
+    "name":             "blocker",
+    "version":          "9.9.9",
+    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":      "Update description.",
+    "keywords":
+    [
+                        "btree", "leveldb", "levelup", "binary", "mvcc",
+                        "database", "json", "b-tree", "concurrent", "persistence"
+    ],
+    "contributors":     [],
+    "homepage":         "https://github.com/bigeasy/blocker",
+    "bugs":             "https://github.com/bigeasy/blocker/issues",
+    "licenses":
+    [{
+                        "type": "MIT",
+                        "url": "http://github.com/bigeasy/blocker/raw/master/LICENSE"
+    }],
+    "repository":
+    {
+                        "type": "git",
+                        "url": "http://github.com/bigeasy/blocker.git"
+    },
+    "dependencies":
+    {
+                        "cadence":            "0.0.35"
+    },
+    "devDependencies":
+    {
+                        "proof":              "0.0.42"
+    },
+    "scripts":
+    {
+                        "test": "proof platform win32 && proof test */*/*.t.js || t/test"
+    }
+}
