@@ -1,6 +1,6 @@
 Blocker
 
-Update description.
+Read a stream in sliced chunks associating each chunk with a callback.
 
     Discussion:     http://github.com/bigeasy/blocker/issues/1
 

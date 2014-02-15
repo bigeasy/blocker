@@ -2,7 +2,7 @@
     "name":             "blocker",
     "version":          "9.9.9",
     "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "Update description.",
+    "description":      "Read a stream in sliced chunks associating each chunk with a callback.",
     "keywords":
     [
                         "btree", "leveldb", "levelup", "binary", "mvcc",
