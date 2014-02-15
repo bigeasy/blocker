@@ -6,4 +6,5 @@ buffering are provided by `stream.Readable`.
 
 ### Issue by Issue
 
+ * Assert that block is properly sliced #8.
  * Implement basic block reading interface. #7.
