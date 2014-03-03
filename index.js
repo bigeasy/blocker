@@ -4,8 +4,8 @@ var ok = require('assert').ok
 util.inherits(Blocker, Transform)
 
 function Blocker (stream) {
-    this._stream = stream
-    this._stream.on('readable', this._read.bind(this))
+    this.stream = stream
+    this.stream.on('readable', this._read.bind(this))
 }
 
 Blocker.prototype.block = function (size, callback) {
@@ -21,7 +21,7 @@ Blocker.prototype._read = function () {
 
 Blocker.prototype._consume = function () {
     if (this._next && this._readable) {
-        var chunk = this._stream.read(this._next.size)
+        var chunk = this.stream.read(this._next.size)
         if (chunk != null) {
             var callback = this._next.callback
             delete this._next
