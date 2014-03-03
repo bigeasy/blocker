@@ -5,8 +5,7 @@
     "description":      "Read a stream in sliced chunks associating each chunk with a callback.",
     "keywords":
     [
-                        "btree", "leveldb", "levelup", "binary", "mvcc",
-                        "database", "json", "b-tree", "concurrent", "persistence"
+                        "stream", "block", "chunk"
     ],
     "contributors":     [],
     "homepage":         "https://github.com/bigeasy/blocker",
