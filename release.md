@@ -6,6 +6,7 @@ buffering are provided by `stream.Readable`.
 
 ### Issue by Issue
 
+ * Upgrade Cadence to 0.0.36. #12.
  * Upgrade Proof to 0.0.44. #11.
  * Make `stream` a public property. #10.
  * Release version 0.0.1. #9.
