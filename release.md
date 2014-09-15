@@ -6,6 +6,7 @@ buffering are provided by `stream.Readable`.
 
 ### Issue by Issue
 
+ * Upgrade Proof to 0.0.48. #18.
  * Upgrade Cadence to 0.0.40. #16.
  * Upgrade Proof to 0.0.47. #15.
  * Update keywords in `package.json`. #14.
