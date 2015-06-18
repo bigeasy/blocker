@@ -11,6 +11,7 @@
     "homepage":         "https://github.com/bigeasy/blocker",
     "bugs":             "https://github.com/bigeasy/blocker/issues",
     "license":          "MIT",
+    "main":             "blocker",
     "repository":
     {
                         "type": "git",
