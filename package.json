@@ -10,11 +10,7 @@
     "contributors":     [],
     "homepage":         "https://github.com/bigeasy/blocker",
     "bugs":             "https://github.com/bigeasy/blocker/issues",
-    "licenses":
-    [{
-                        "type": "MIT",
-                        "url": "http://github.com/bigeasy/blocker/raw/master/LICENSE"
-    }],
+    "license":          "MIT",
     "repository":
     {
                         "type": "git",
