@@ -1,6 +1,6 @@
-require('proof')(2, prove)
+require('proof')(3, prove)
 
-function prove (equal) {
+function prove (assert) {
     var Blocker = require('../..')
     var stream = require('stream')
     var pipe = new stream.PassThrough
@@ -12,9 +12,15 @@ function prove (equal) {
     pipe.write(buffer.slice(0, 1))
 
     blocker.block(2, function (error, buffer) {
-        equal(buffer.length, 2, 'sliced')
-        equal(buffer.readUInt16BE(0), 0xaaaa, 'block is ready')
+        assert(buffer.length, 2, 'sliced')
+        assert(buffer.readUInt16BE(0), 0xaaaa, 'block is ready')
     })
-
     pipe.write(buffer.slice(1))
+
+    blocker.interrupt(new Error)
+
+    blocker.block(16, function (error) {
+        assert(error.message, 'interrupt', 'interrupt')
+    })
+    blocker.interrupt(new Error('interrupt'))
 }

@@ -32,4 +32,12 @@ Blocker.prototype._consume = function () {
     }
 }
 
+Blocker.prototype.interrupt = function (error) {
+    if (this._next) {
+        var callback = this._next.callback
+        delete this._next
+        callback(error)
+    }
+}
+
 module.exports = Blocker
