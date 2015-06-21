@@ -1,12 +1,12 @@
-var util = require('util')
-var Transform = require('stream').Transform
 var ok = require('assert').ok
-util.inherits(Blocker, Transform)
+var Transform = require('stream').Transform
+var util = require('util')
 
 function Blocker (stream) {
     this.stream = stream
     this.stream.on('readable', this._read.bind(this))
 }
+util.inherits(Blocker, Transform)
 
 Blocker.prototype.block = function (size, callback) {
     ok(!this._next, 'size already set')
