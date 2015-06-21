@@ -1,4 +1,6 @@
-require('proof')(2, function (equal) {
+require('proof')(2, prove)
+
+function prove (equal) {
     var Blocker = require('../..')
     var stream = require('stream')
     var pipe = new stream.PassThrough
@@ -15,4 +17,4 @@ require('proof')(2, function (equal) {
     })
 
     pipe.write(buffer.slice(1))
-})
+}
