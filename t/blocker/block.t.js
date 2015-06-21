@@ -9,7 +9,7 @@ require('proof')(2, function (equal) {
 
     pipe.write(buffer.slice(0, 1))
 
-    blocker.block(2, function (buffer) {
+    blocker.block(2, function (error, buffer) {
         equal(buffer.length, 2, 'sliced')
         equal(buffer.readUInt16BE(0), 0xaaaa, 'block is ready')
     })

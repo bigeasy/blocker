@@ -25,7 +25,7 @@ Blocker.prototype._consume = function () {
         if (chunk != null) {
             var callback = this._next.callback
             delete this._next
-            callback(chunk)
+            callback(null, chunk)
         } else {
             this._readable = false
         }
