@@ -1,4 +1,4 @@
-require('proof')(3, prove)
+require('proof')(4, prove)
 
 function prove (assert) {
     var Blocker = require('../..')
@@ -17,7 +17,11 @@ function prove (assert) {
     })
     pipe.write(buffer.slice(1))
 
-    blocker.interrupt(new Error)
+    blocker.interrupt(new Error('interrupt'))
+
+    blocker.block(16, function (error) {
+        assert(error.message, 'interrupt', 'interrupt')
+    })
 
     blocker.block(16, function (error) {
         assert(error.message, 'interrupt', 'interrupt')
