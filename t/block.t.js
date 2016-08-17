@@ -1,7 +1,7 @@
 require('proof')(4, prove)
 
 function prove (assert) {
-    var Blocker = require('../..')
+    var Blocker = require('..')
     var stream = require('stream')
     var pipe = new stream.PassThrough
     var blocker = new Blocker(pipe)
