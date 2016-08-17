@@ -1,31 +1,33 @@
 {
-    "name":             "blocker",
-    "version":          "1.0.0",
-    "author":           "Alan Gutierrez <alan@prettyrobots.com>",
-    "description":      "Read a stream in sliced chunks associating each chunk with a callback.",
+    "name":                 "blocker",
+    "version":              "1.0.0",
+    "author":               "Alan Gutierrez <alan@prettyrobots.com>",
+    "description":
+
+      "Read a stream in sliced chunks associating each chunk with a callback.",
+
     "keywords":
     [
-                        "stream", "block", "chunk"
+                            "stream", "block", "chunk"
     ],
-    "contributors":     [],
-    "homepage":         "https://github.com/bigeasy/blocker",
-    "bugs":             "https://github.com/bigeasy/blocker/issues",
-    "license":          "MIT",
-    "main":             "blocker",
+    "homepage":             "https://github.com/bigeasy/blocker",
+    "bugs":                 "https://github.com/bigeasy/blocker/issues",
+    "license":              "MIT",
+    "main":                 "blocker",
     "repository":
     {
-                        "type": "git",
-                        "url": "http://github.com/bigeasy/blocker.git"
+                            "type": "git",
+                            "url": "http://github.com/bigeasy/blocker.git"
     },
     "dependencies":
     {
     },
     "devDependencies":
     {
-                        "proof":              "1.x"
+                            "proof":                        "1.x"
     },
     "scripts":
     {
-                        "test": "proof platform win32 && proof test */*/*.t.js || t/test"
+                            "test": "proof platform win32 && proof test */*/*.t.js || t/test"
     }
 }
