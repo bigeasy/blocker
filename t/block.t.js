@@ -1,4 +1,4 @@
-require('proof/redux')(4, prove)
+require('proof/redux')(5, prove)
 
 function prove (assert) {
     var Blocker = require('..')
@@ -10,6 +10,10 @@ function prove (assert) {
     buffer.writeUInt16BE(0xaaaa, 0)
 
     pipe.write(buffer.slice(0, 1))
+
+    blocker.block(0, function (error, buffer) {
+        assert(buffer.length, 0, 'zero')
+    })
 
     blocker.block(2, function (error, buffer) {
         assert(buffer.length, 2, 'sliced')

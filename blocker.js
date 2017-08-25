@@ -10,13 +10,17 @@ util.inherits(Blocker, Transform)
 
 Blocker.prototype.block = function (size, callback) {
     ok(!this._next, 'size already set')
-    if (this._error) {
-        var error = this._error
-        delete this._error
-        callback(error)
+    if (size == 0) {
+        callback(null, new Buffer(0))
     } else {
-        this._next = { size: size, callback: callback }
-        this._consume()
+        if (this._error) {
+            var error = this._error
+            delete this._error
+            callback(error)
+        } else {
+            this._next = { size: size, callback: callback }
+            this._consume()
+        }
     }
 }
 
