@@ -1,5 +1,4 @@
 var ok = require('assert').ok
-var util = require('util')
 
 function Blocker (stream) {
     this.stream = stream
