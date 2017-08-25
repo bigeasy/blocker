@@ -1,6 +1,6 @@
 require('proof/redux')(5, prove)
 
-function prove (assert) {
+function prove (okay) {
     var Blocker = require('..')
     var stream = require('stream')
     var pipe = new stream.PassThrough
@@ -12,23 +12,23 @@ function prove (assert) {
     pipe.write(buffer.slice(0, 1))
 
     blocker.block(0, function (error, buffer) {
-        assert(buffer.length, 0, 'zero')
+        okay(buffer.length, 0, 'zero')
     })
 
     blocker.block(2, function (error, buffer) {
-        assert(buffer.length, 2, 'sliced')
-        assert(buffer.readUInt16BE(0), 0xaaaa, 'block is ready')
+        okay(buffer.length, 2, 'sliced')
+        okay(buffer.readUInt16BE(0), 0xaaaa, 'block is ready')
     })
     pipe.write(buffer.slice(1))
 
     blocker.interrupt(new Error('interrupt'))
 
     blocker.block(16, function (error) {
-        assert(error.message, 'interrupt', 'interrupt')
+        okay(error.message, 'interrupt', 'interrupt')
     })
 
     blocker.block(16, function (error) {
-        assert(error.message, 'interrupt', 'interrupt')
+        okay(error.message, 'interrupt', 'interrupt')
     })
     blocker.interrupt(new Error('interrupt'))
 }
